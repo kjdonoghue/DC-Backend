@@ -1,0 +1,50 @@
+<html>
+    <head>    
+    <title>Movie Tracker</title>
+    </head>
+    <body>
+
+    <h1>Movie Tracker</h1>
+
+    <h2>Add a Movie</h2>
+
+    <form method="POST" action="/movies/create">
+        <input type="text" placeholder="movie title" name="title" />
+        <input type="text" placeholder="movie description" name="description" />
+        <input type="text" placeholder="genre" name="genre" />
+        <input type="text" placeholder="poster" name="poster" />
+        <button>Submit</button>
+    </form>
+
+    
+    <h2>View All Movies</h2>
+
+    <ul>
+    {{#allMovies}}
+        
+            <li>
+                <b>Title: {{title}}</b>
+                <img src="{{poster}}">
+                <form method="GET" action="/movies/:movieId"`>
+                    <button>Details</button>
+                    <input type="hidden" value="{{movieId}}" name="movieId" />
+                </form>    
+                <form method="POST" action="/movies/delete">
+                    <button>Delete</button>
+                    <input type="hidden" value="{{movieId}}" name="movieId">
+                </form>
+            </li>
+        </form>
+    {{/allMovies}}
+    </ul>
+
+    <ul>
+    {{#movieDetails}}
+    {{title}}
+    {{description}}
+    {{genre}}
+
+    {{/movieDetails}}
+    
+    </body>
+</html>
