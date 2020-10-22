@@ -6,21 +6,26 @@
     <body>
 
     <h1>Welcome to Trip Tracker</h1>
-    <div class="regBox">
-        <form method="POST" action="/registration/register">
-            <div>
-                <input type="text" placeholder="username" name="username" />
-            </div>
-            <div>
-                <input type="password" placeholder="password" name="password" />
-            </div>
-            <div>
-                <button>Submit</button>
-            </div>
-        </form>
-    </div>
 
-    {{message}}
+    <div class="regBox">
+        <form method="POST" action="/registration/register" class="regBorder">
+            <div class="regMsg">
+            <b>Register for your Trip Tracker account:</b>
+            </div>
+            <div class="regItem">
+                <input type="text" placeholder="Username" name="username" class="textBox"/>
+            </div>
+            <div class="regItem">
+                <input type="password" placeholder="Password" name="password" class="textBox"/>
+            </div>
+            <div class="regButton">
+                <button class="submitButton">Submit</button>
+            </div>
+        
+        </form>
+
+        <div> {{message}} </div>
+    </div>
     
     
     </body>

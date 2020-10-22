@@ -6,19 +6,22 @@
     <body>
 
     <div>
-        <form method="POST" action="/trips/logout">
-            <button>Log Out<button>
+        <form method="POST" action="/trips/logout" class="logout">
+            <button>Log Out</button>
         </form>
     </div>
+    <h1>Trip Tracker</h1>
 
-    <h1>Create a Trip</h1>
+    <h2>Create a Trip</h2>
+    <div class="addTrip">
         <form method="POST" action="/trips/create-trip">
-            <input type="text" placeholder = "Trip Title" name="title" />
-            <input type="text" placeholder = "Image URL" name="imageURL" />
-            <input type="text" placeholder = "Departure Date" name="departureDate" />
-            <input type="text" placeholder = "Return Date" name="returnDate" />
+            <input type="text" placeholder = "Trip Title" name="title" class="tripTB"/>
+            <input type="text" placeholder = "Image URL" name="imageURL" class="tripTB"/>
+            <input type="text" placeholder = "Departure Date" name="departureDate" class="tripTB"/>
+            <input type="text" placeholder = "Return Date" name="returnDate" class="tripTB"/>
             <button>Save</button>
         </form>
+    </div>
 
     <h2>Your Trips<h2>
         <ul>

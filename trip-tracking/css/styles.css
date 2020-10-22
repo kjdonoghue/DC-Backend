@@ -1,7 +1,59 @@
+/* Universal */
 h1 {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Registration & Login Page */
+.regBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.regBorder {
+    border-style: dotted;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.regMsg {
+    border: 10px;
+    padding: 10px;
     text-align: center;
 }
 
-.regBox {
-    
+.regItem {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.textBox {
+    width: 90%;
+}
+
+.regButton {
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+.submitButton {
+    background-color: slategray;
+    color: white;
+}
+
+.register {
+    text-align: center;
+}
+
+/* Trips Page */
+
+.logout {
+    float: right;
+    margin: 10px;
 }

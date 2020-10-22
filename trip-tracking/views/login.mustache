@@ -5,19 +5,29 @@
     </head>
     <body>
 
-    <h1> Login Page </h1>
+    <h1> Ready to Getaway? </h1>
 
-    <form method="POST" action="/login">
-    <input type="text" placeholder="username" name="username" />
-    <input type="password" placeholder="password" name="password" />
-    <button>Submit</button>
-    </form>
+    <div class="regBox">
+        <form method="POST" action="/login" class="regBorder">
+        <div class="regMsg"> 
+            <b>Log in below:</b>
+        </div>
+        <div class="regItem">
+            <input type="text" placeholder="username" name="username" class="textBox"/>
+        </div>
+        <div class="regItem">
+            <input type="password" placeholder="password" name="password" class="textBox"/>
+        </div>
+        <div class="regButton">
+            <button class="submitButton">Submit</button>
+        </div>
+        </form>
 
-    <a href="/registration">Register an Account</a>
+    </div>
 
-    {{message}}
+    <div class="register"><a href="/registration">Register for an account</a></div>
 
-    
+    <b>{{message}}</b>
     
     </body>
 </html>
