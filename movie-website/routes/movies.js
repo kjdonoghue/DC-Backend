@@ -1,6 +1,6 @@
-const express = require('express')
-const router = express.Router() 
-// const { v4: uuidv4 } = require('uuid')
+const express = require('express');
+const router = express.Router(); 
+const { v4: uuidv4 } = require('uuid');
 
 
 router.get("/",(req,res) => {
@@ -12,8 +12,7 @@ router.post("/create", (req, res) => {
     let description = req.body.description
     let genre = req.body.genre
     let poster = req.body.poster
-    let movieId = 4
-    // uuidv4()
+    let movieId = uuidv4()
 
     let movie = {
         movieId: movieId,
@@ -30,19 +29,32 @@ router.post("/create", (req, res) => {
 
 router.post("/delete", (req, res) => {
     let movieId = req.body.movieId
-
+    
     movies = movies.filter(movie => {
         return movie.movieId != movieId
     })
     res.redirect("/movies")
 }) 
 
-router.get("/:movieId", (req, res) => {
+router.post("/:movieId", (req, res) => {
     let movieId = req.params.movieId
 
+    details = movies.filter(movie => {
+        return movie.movieId == movieId
+    })
+    console.log(details)
+
+    res.render("details", {movieDetails: details})
+})
+
+router.get("/:genre", (req, res) => {
+    let genre = req.params.genre
     
-    console.log(movies)
-    res.render("movies", {movieDetails: movies})
+    genreArray = movies.filter(movie => {
+        return movie.genre == genre
+    })
+   
+    res.render("genre", {movieGenres: genreArray})
 })
 
 

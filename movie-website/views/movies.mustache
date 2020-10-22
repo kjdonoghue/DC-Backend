@@ -6,6 +6,12 @@
 
     <h1>Movie Tracker</h1>
 
+    <h3>search by genre</h3>
+    <form method="GET" action="/movies/:genre">
+        <input type="text" placeholder="genre" name="genre" />
+        <button>Submit</button>
+    </form>
+
     <h2>Add a Movie</h2>
 
     <form method="POST" action="/movies/create">
@@ -23,28 +29,18 @@
     {{#allMovies}}
         
             <li>
+            <form method="POST">
                 <b>Title: {{title}}</b>
-                <img src="{{poster}}">
-                <form method="GET" action="/movies/:movieId"`>
-                    <button>Details</button>
-                    <input type="hidden" value="{{movieId}}" name="movieId" />
-                </form>    
-                <form method="POST" action="/movies/delete">
-                    <button>Delete</button>
-                    <input type="hidden" value="{{movieId}}" name="movieId">
+                <img src="{{poster}}"/>
+                <input type="hidden" value="{{movieId}}" name="movieId" />
+                <button formaction="/movies/{{movieId}}">Details</button>
+                <button formaction="/movies/delete">Delete</button>
                 </form>
             </li>
         </form>
     {{/allMovies}}
     </ul>
 
-    <ul>
-    {{#movieDetails}}
-    {{title}}
-    {{description}}
-    {{genre}}
-
-    {{/movieDetails}}
     
     </body>
 </html>
