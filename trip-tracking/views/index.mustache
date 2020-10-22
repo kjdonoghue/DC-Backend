@@ -4,35 +4,7 @@
     </head>
     <body>
 
-    <h1>Create a Trip</h1>
-        <form method="POST" action="create-trip">
-            <input type="text" placeholder = "Trip Title" name="title" />
-            <input type="text" placeholder = "Image URL" name="imageURL" />
-            <input type="text" placeholder = "Departure Date" name="departureDate" />
-            <input type="text" placeholder = "Return Date" name="returnDate" />
-            <button>Save</button>
-        </form>
-
-    <h2>Your Trips<h2>
-        <ul>
-            {{#allTrips}}
-
-                <li> 
-                    <form method="POST" action="delete-trip">
-                        <b> Trip to {{title}}</b>
-                        <label>Departure Date: {{departureDate}}</label>
-                        <label>Return Date: {{returnDate}}</label>
-                        <img src="{{imageURL}}">
-                        <button>Delete</button>
-                        <input type="hidden" value="{{tripID}}" name="tripID"/>
-                    </form>
-                </li>
-
-            {{/allTrips}}
-
-        </ul>
-
-
+    
     
     </body>
 </html>

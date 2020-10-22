@@ -2,61 +2,46 @@ const express = require('express')
 const app = express()
 const mustacheExpress = require('mustache-express')
 const { v4: uuidv4 } = require('uuid');
+const tripsRouter = require("./routes/trips") 
+const registrationRouter = require("./routes/registration")
+const loginRouter = require("./routes/login")
+const loggedoutRouter = require("./routes/loggedout")
+const session = require("express-session")
 
-trips = []
+
+global.users = [{username: "demo", password: "demo"}]
+global.trips = []
 
 app.use(express.urlencoded())
+app.use("/css", express.static("css"))
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+  }))
 
 
+app.use("/registration", registrationRouter)
+app.use("/login", loginRouter)
+app.use("/trips", authenticate, tripsRouter)
+app.use("/loggedout", loggedoutRouter)
 app.engine("mustache", mustacheExpress())
 app.set("views", "./views")
 app.set("view engine", "mustache")
 
+function authenticate(req, res, next) {
+    if (req.session) {
+        if (req.session.username) {
+            next()
+        } else {
+            res.redirect("/login")
+        }
 
-
-app.get("/", (req, res) => {
-    res.render("index", {allTrips: trips})
-})
-
-app.post("/create-trip", (req, res) => {
-    let title = req.body.title
-    let imageURL = req.body.imageURL
-    let departureDate = req.body.departureDate
-    let returnDate = req.body.departureDate
-    let tripID = uuidv4()
-
-    let trip = {
-        tripID: tripID,
-        title: title,
-        imageURL: imageURL,
-        departureDate: departureDate,
-        returnDate: returnDate
+    } else {
+        res.redirect("/login")
     }
 
-    trips.push(trip)
-
-    res.redirect("/")
-})
-
-
-app.post("/delete-trip", (req, res) => {
-    let tripID = req.body.tripID
-
-    trips = trips.filter(trip => {
-        return trip.tripID != tripID
-    })
-    res.redirect("/")
-})
-
-app.post("/editTrip", (req, res) => {
-    let tripID = req.body.tripID
-
-    trips = trips.filter(trip => {
-        return trip.tripID != tripID
-    })
-    res.redirect("/")
-})
-
+}
 
 app.listen(3000, () => {
     console.log("the server is running")
