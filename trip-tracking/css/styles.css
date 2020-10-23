@@ -1,7 +1,36 @@
 /* Universal */
-h1 {
+body {
+    font-family: Arial, Helvetica, sans-serif
+}
+
+h1, h2 {
     text-align: center;
     margin-top: 25px;
+    font-family: 'Waiting for the Sunrise', cursive;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+.header {
+    display: flex;
+}
+
+.header img {
+    margin: auto;
+}
+
+.footer {
+    display:flex;
+}
+
+.footer img {
+    width: 100%;
 }
 
 /* Registration & Login Page */
@@ -56,4 +85,63 @@ h1 {
 .logout {
     float: right;
     margin: 10px;
+}
+
+.tripsContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.addTripContainer {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.addTrip {
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.tlContainer{
+    display: flex;
+
+}
+
+.tripListing {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+.tripImage {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.tripImage img {
+    width: 90%;
+}
+
+.tripDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tripDetails label {
+    margin: 3px;
+}
+
+.tripDetail button {
+    margin: 5px;
 }

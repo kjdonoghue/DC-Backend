@@ -7,13 +7,18 @@ const registrationRouter = require("./routes/registration")
 const loginRouter = require("./routes/login")
 const loggedoutRouter = require("./routes/loggedout")
 const session = require("express-session")
-
+const path = require("path")
+const VIEWS_PATH = path.join(__dirname, "/views")
 
 global.users = [{username: "demo", password: "demo"}]
-global.trips = []
+global.trips = [{title: "Denver", imageURL: "https://kdvr.com/wp-content/uploads/sites/11/2019/03/gettyimages-1126807921.jpg?w=876&h=493&crop=1",
+departureDate: "12/20/2020", returnDate: "12/27/2020"}, {title: "Denver", imageURL: "https://kdvr.com/wp-content/uploads/sites/11/2019/03/gettyimages-1126807921.jpg?w=876&h=493&crop=1",
+departureDate: "12/20/2020", returnDate: "12/27/2020"}]
 
 app.use(express.urlencoded())
 app.use("/css", express.static("css"))
+app.use("/images", express.static("images"))
+
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -23,10 +28,11 @@ app.use(session({
 
 app.use("/registration", registrationRouter)
 app.use("/login", loginRouter)
-app.use("/trips", authenticate, tripsRouter)
+// app.use("/trips", authenticate, tripsRouter)
+app.use("/trips", tripsRouter)
 app.use("/loggedout", loggedoutRouter)
-app.engine("mustache", mustacheExpress())
-app.set("views", "./views")
+app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"))
+app.set("views", VIEWS_PATH)
 app.set("view engine", "mustache")
 
 function authenticate(req, res, next) {

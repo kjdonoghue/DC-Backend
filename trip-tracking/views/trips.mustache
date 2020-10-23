@@ -1,46 +1,60 @@
 <html>
     <head>    
         <title>Trip Tracker | Your Trips</title>
+        <link href="https://fonts.googleapis.com/css2?family=Waiting+for+the+Sunrise&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/styles.css" />
     </head>
     <body>
+    <div class="tripsContainer">
 
     <div>
         <form method="POST" action="/trips/logout" class="logout">
             <button>Log Out</button>
         </form>
     </div>
-    <h1>Trip Tracker</h1>
 
-    <h2>Create a Trip</h2>
-    <div class="addTrip">
-        <form method="POST" action="/trips/create-trip">
-            <input type="text" placeholder = "Trip Title" name="title" class="tripTB"/>
-            <input type="text" placeholder = "Image URL" name="imageURL" class="tripTB"/>
-            <input type="text" placeholder = "Departure Date" name="departureDate" class="tripTB"/>
-            <input type="text" placeholder = "Return Date" name="returnDate" class="tripTB"/>
-            <button>Save</button>
-        </form>
+    {{> header}}
+   
+    <h1>Your Trips</h1>
+   
+    <div class="addTripContainer">
+        <h2>Create a Trip</h2>
+        <div class="addTrip">
+            <form method="POST" action="/trips/create-trip">
+            <div>
+                <input type="text" placeholder = "Destination" name="title" class="tripTB"/>
+                <input type="text" placeholder = "Image URL" name="imageURL" class="tripTB"/>
+                <input type="text" placeholder = "Departure Date" name="departureDate" class="tripTB"/>
+                <input type="text" placeholder = "Return Date" name="returnDate" class="tripTB"/>
+                <button class="submitButton">Save</button>
+            </div>
+            </form>
+        </div>
     </div>
 
-    <h2>Your Trips<h2>
-        <ul>
+    <h2>Upcoming Trips</h2>
+        <div class="tlContainer">
             {{#allTrips}}
 
-                <li> 
+                <div class="tripListing"> 
                     <form method="POST" action="/trips/delete-trip">
-                        <b> Trip to {{title}}</b>
-                        <label>Departure Date: {{departureDate}}</label>
-                        <label>Return Date: {{returnDate}}</label>
-                        <img src="{{imageURL}}"/>
-                        <button>Delete</button>
+                        <div class="tripImage">
+                            <img src="{{imageURL}}"/>
+                        </div>
+                        <div class="tripDetails">
+                            <label><b>{{title}}</b></label>
+                            <label>Departure Date: {{departureDate}}</label>
+                            <label>Return Date: {{returnDate}}</label>
+                            <button class="submitButton">Delete Trip</button>
+                         </div>
                         <input type="hidden" value="{{tripID}}" name="tripID"/>
                     </form>
-                </li>
+                </div>
 
             {{/allTrips}}
 
-        </ul>
-    
+        </div>
+    </div>
+    {{ > footer}}
     </body>
 </html>

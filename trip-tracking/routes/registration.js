@@ -15,7 +15,7 @@ router.post("/register", (req, res) => {
         return username == user.username})
         
     if (dupUser) {
-            res.render("registration", {message: "that user name is already taken"})
+            res.render("registration", {message: "This user name is already taken, please try again"})
         } else {
             let newUser = {username: username, password: password}
             users.push(newUser) 
