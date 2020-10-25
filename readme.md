@@ -38,6 +38,12 @@ Screenshots:
 ### To Do List
 - Prompt: Create an app which allows the user to post to do list items to a web API and display the list through the user interface - [Visit To Do List](https://github.com/kjdonoghue/DC-Backend/tree/master/to-do-list)
 
+
+- To Do List: 
+
+-<img src="to-do-list/screenshot/to-do-list.png" alt="to do list" width=370>
+
+
 ### Monday Activites
 - Practice creating dynamic pages- [Visit Monday Activities](https://github.com/kjdonoghue/DC-Backend/tree/master/Monday-Activity)
 
