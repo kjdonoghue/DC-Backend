@@ -4,7 +4,7 @@
 ## Summary of Work
 
 ### Trip Tracking
-- Create an app using serverside pages that allows the user to register for an account with an encrypted password, log in to start a sesson, input, delete and view upcoming trips, and log out of their account. [Visit Trip Tracking](https://github.com/kjdonoghue/DC-Backend/tree/master/trip-tracking)
+- Prompt: Create an app using serverside pages that allows the user to register for an account with an encrypted password, log in to start a sesson, input, delete and view upcoming trips, and log out of their account. [Visit Trip Tracking](https://github.com/kjdonoghue/DC-Backend/tree/master/trip-tracking)
 
 Screenshots:
 
@@ -24,11 +24,19 @@ Screenshots:
 
 -<img src="trip-tracking/images/screenshots/trip-tracker-loggedout.png" alt="Log In Page" width=370>
 
-### Movies Website
+### Movie Website
+- Prompt: Create an app which allows a user to add and display movies, the display should be able to sort by genre, and user should be able to select to see more deatils about the movie or delete the movie. [Visit Movie website](https://github.com/kjdonoghue/DC-Backend/tree/master/movie-website)
 
+- Movie Listing Page: 
+
+-<img src="movie-website/screenshots/movie-listing.png" alt="Movie Listing Page" width=370>
+
+- Movie Detail Page: 
+
+-<img src="movie-website/screenshots/movie-details.png" alt="Movie Listing Page" width=370>
 
 ### To Do List
-- Create an app which allows the user to post to do list items to a web API and display the list through the user interface - [Visit To Do List](https://github.com/kjdonoghue/DC-Backend/tree/master/to-do-list)
+- Prompt: Create an app which allows the user to post to do list items to a web API and display the list through the user interface - [Visit To Do List](https://github.com/kjdonoghue/DC-Backend/tree/master/to-do-list)
 
 ### Monday Activites
 - Practice creating dynamic pages- [Visit Monday Activities](https://github.com/kjdonoghue/DC-Backend/tree/master/Monday-Activity)
