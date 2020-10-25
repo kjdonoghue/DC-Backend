@@ -1,20 +1,24 @@
 <html>
     <head>    
     <title>Movie Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css" />
     </head>
     <body>
 
-    <h1>Movie Details</h1>
+    <div class="detailContainer">
+        <h1>Movie Details</h1>
 
-    <ul>
-        {{#movieDetails}}
-            <label> Title: {{title}} </label>
-            <label>Description: {{description}} </label>
-            <label> Genre:{{genre}} </label>
-            <img src="{{poster}}" />
-
-        {{/movieDetails}}
-    </ul>
+   
+            {{#movieDetails}}
+            <div class="detailItem">
+                <img src="{{poster}}" />
+                <div><b> {{title}} </b></div>
+                <div><b> Genre:</b>{{genre}}</div>
+                <div><b>Description:</b> {{description}}</div>
+                
+            </div>
+            {{/movieDetails}}
     
+    </div>
     </body>
 </html>

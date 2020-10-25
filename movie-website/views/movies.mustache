@@ -1,46 +1,61 @@
 <html>
     <head>    
     <title>Movie Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+
     </head>
     <body>
+    <div class="movieContainer"> 
 
-    <h1>Movie Tracker</h1>
-
-    <h3>search by genre</h3>
-    <form method="GET" action="/movies/:genre">
-        <input type="text" placeholder="genre" name="genre" />
-        <button>Submit</button>
-    </form>
-
-    <h2>Add a Movie</h2>
-
-    <form method="POST" action="/movies/create">
-        <input type="text" placeholder="movie title" name="title" />
-        <input type="text" placeholder="movie description" name="description" />
-        <input type="text" placeholder="genre" name="genre" />
-        <input type="text" placeholder="poster" name="poster" />
-        <button>Submit</button>
-    </form>
-
-    
-    <h2>View All Movies</h2>
-
-    <ul>
-    {{#allMovies}}
         
-            <li>
-            <form method="POST">
-                <b>Title: {{title}}</b>
-                <img src="{{poster}}"/>
-                <input type="hidden" value="{{movieId}}" name="movieId" />
-                <button formaction="/movies/{{movieId}}">Details</button>
-                <button formaction="/movies/delete">Delete</button>
-                </form>
-            </li>
-        </form>
-    {{/allMovies}}
-    </ul>
+        <h1>Movie Tracker</h1>
 
-    
+        <div class="addMovies">
+            </form>
+
+            <h2>Add a Movie</h2>
+            <form method="POST" action="/movies/create" class="addForm">
+                <input type="text" placeholder="movie title" name="title" />
+                <input type="text" placeholder="movie description" name="description" />
+                <input type="text" placeholder="genre" name="genre" />
+                <input type="text" placeholder="poster" name="poster" />
+                <button>Submit</button>
+            </form>
+        </div>
+
+        <div class="viewMovies">
+            <h2>View All Movies</h2>  
+            <form method="POST" action="/movies/search">
+                <select name="genre">
+                    <option value="">Select a Genre</option>
+                    <option value="superhero">Superhero</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+                <button>Search</button>
+            </form>
+        </div>    
+
+        <div class="movieItemContainer">
+            {{#allMovies}}
+
+            <form method="POST">   
+                <div class="movieItem">
+                    <img src="{{poster}}"/>
+                    <div><b>{{title}}</b></div>
+                    <input type="hidden" value="{{movieId}}" name="movieId" />
+                    <div class="buttons">
+                        <button formaction="/movies/{{movieId}}">Details</button>
+                        <button formaction="/movies/delete">Delete</button>
+                    </div>
+                </div>    
+            </form>
+
+            
+
+            {{/allMovies}}
+           
+        </div>
+
+    </div>
     </body>
 </html>

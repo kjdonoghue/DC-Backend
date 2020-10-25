@@ -36,27 +36,25 @@ router.post("/delete", (req, res) => {
     res.redirect("/movies")
 }) 
 
-router.post("/:movieId", (req, res) => {
-    let movieId = req.params.movieId
-
-    details = movies.filter(movie => {
-        return movie.movieId == movieId
-    })
-    console.log(details)
-
-    res.render("details", {movieDetails: details})
-})
-
-router.get("/:genre", (req, res) => {
-    let genre = req.params.genre
+router.post("/search", (req, res) => {
+    let genre = req.body.genre
     
-    genreArray = movies.filter(movie => {
+    let genreArray = movies.filter(movie => {
         return movie.genre == genre
     })
    
-    res.render("genre", {movieGenres: genreArray})
+    res.render("movies", {allMovies: genreArray})
 })
 
+router.post("/:movieId", (req, res) => {
+    let movieId = req.params.movieId
+
+    let details = movies.filter(movie => {
+        return movie.movieId == movieId
+    })
+
+    res.render("details", {movieDetails: details})
+})
 
 
 module.exports = router 

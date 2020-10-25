@@ -1,0 +1,46 @@
+/* Universal */
+h1 {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Movies Page */
+.movieContainer {
+    padding: 25px;
+}
+
+.addMovies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.viewMovies {
+    display: flex;
+    flex-direction: column;
+}
+
+.movieItemContainer {
+    display: flex;
+}
+
+.movieItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:10px;
+}
+
+/* Details Page */
+.detailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
