@@ -11,7 +11,7 @@ const path = require("path")
 const VIEWS_PATH = path.join(__dirname, "/views")
 const bcrypt = require('bcryptjs')
 
-global.users = [{username: "demo", password: "demo"}]
+global.users = []
 global.trips = [{title: "Denver", imageURL: "https://kdvr.com/wp-content/uploads/sites/11/2019/03/gettyimages-1126807921.jpg?w=876&h=493&crop=1",
 departureDate: "12/20/2020", returnDate: "12/27/2020"}, {title: "Savannah", imageURL: "https://media.timeout.com/images/105239108/750/422/image.jpg",
 departureDate: "03/15/2021", returnDate: "03/28/2021"}]
