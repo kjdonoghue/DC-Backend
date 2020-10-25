@@ -2,7 +2,7 @@ let taskTitle = document.getElementById("taskTitle")
 let taskPriority = document.getElementById("taskPriority")
 let taskDate = document.getElementById("taskDate")
 let submitButton = document.getElementById("submitButton")
-let toDoList = document.getElementById("toDoListUL")
+let toDoList = document.getElementById("toDoList")
 
 
 submitButton.addEventListener("click", () => {
@@ -35,7 +35,7 @@ function populateToDoList() {
         .then(response => response.json())
         .then(tasks => {
             let taskItem = tasks.map((task) => {
-                return `<li>${task.title} - ${task.priority} - ${task.date} <button>Delete</button></li>`
+                return `<div class="taskItem">To Do: ${task.title} - Priority: ${task.priority} - Date Entered: ${task.date} <button class="deleteButton">Delete</button></div>`
 
             })
             toDoList.insertAdjacentHTML("beforeend", taskItem.join(''))
