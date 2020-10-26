@@ -10,11 +10,11 @@ const session = require("express-session")
 const path = require("path")
 const VIEWS_PATH = path.join(__dirname, "/views")
 const bcrypt = require('bcryptjs')
+const pgp = require("pg-promise")()
+const connectionString = "postgres://localhost:5432/tripsdatabase"
+const db = pgp(connectionString)
 
-global.users = []
-global.trips = [{title: "Denver", imageURL: "https://kdvr.com/wp-content/uploads/sites/11/2019/03/gettyimages-1126807921.jpg?w=876&h=493&crop=1",
-departureDate: "12/20/2020", returnDate: "12/27/2020"}, {title: "Savannah", imageURL: "https://media.timeout.com/images/105239108/750/422/image.jpg",
-departureDate: "03/15/2021", returnDate: "03/28/2021"}]
+// global.users = []
 
 app.use(express.urlencoded())
 app.use("/css", express.static("css"))
@@ -29,7 +29,8 @@ app.use(session({
 
 app.use("/registration", registrationRouter)
 app.use("/login", loginRouter)
-app.use("/trips", authenticate, tripsRouter)
+app.use("/trips", tripsRouter)
+//app.use("/trips", authenticate, tripsRouter)
 app.use("/loggedout", loggedoutRouter)
 app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"))
 app.set("views", VIEWS_PATH)

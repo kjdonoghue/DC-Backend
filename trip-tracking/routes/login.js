@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
+const pgp = require("pg-promise")();
+const connectionString = "postgres://localhost:5432/tripsdatabase";
+const db = pgp(connectionString);
 
 router.get("/", (req, res) => {
     res.render("login")
@@ -27,5 +30,10 @@ router.post("/", (req,res) => {
     }
 
 })
+
+
+
+    
+
 
 module.exports = router

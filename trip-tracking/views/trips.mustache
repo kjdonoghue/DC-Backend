@@ -23,9 +23,9 @@
             <form method="POST" action="/trips/create-trip">
             <div>
                 <input type="text" placeholder = "Destination" name="title" class="tripTB"/>
-                <input type="text" placeholder = "Image URL" name="imageURL" class="tripTB"/>
-                <input type="text" placeholder = "Departure Date" name="departureDate" class="tripTB"/>
-                <input type="text" placeholder = "Return Date" name="returnDate" class="tripTB"/>
+                <input type="text" placeholder = "Image URL" name="image_url" class="tripTB"/>
+                <input type="text" placeholder = "Departure Date" name="departure_date" class="tripTB"/>
+                <input type="text" placeholder = "Return Date" name="return_date" class="tripTB"/>
                 <button class="submitButton">Save</button>
             </div>
             </form>
@@ -37,17 +37,17 @@
             {{#allTrips}}
 
                 <div class="tripListing"> 
-                    <form method="POST" action="/trips/delete-trip">
+                    <form method="POST">
                         <div class="tripImage">
-                            <img src="{{imageURL}}"/>
+                            <img src="{{image_url}}"/>
                         </div>
                         <div class="tripDetails">
                             <label><b>{{title}}</b></label>
-                            <label>Departure Date: {{departureDate}}</label>
-                            <label>Return Date: {{returnDate}}</label>
-                            <button class="submitButton">Delete Trip</button>
+                            <label>Departure Date: {{departure_date}}</label>
+                            <label>Return Date: {{return_date}}</label>
+                            <button formaction="/trips/delete-trip" class="submitButton">Delete Trip</button>
                          </div>
-                        <input type="hidden" value="{{tripID}}" name="tripID"/>
+                        <input type="hidden" value="{{trip_id}}" name="trip_id"/>
                     </form>
                 </div>
 
