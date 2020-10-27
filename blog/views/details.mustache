@@ -9,11 +9,17 @@
 
     <div>
         {{#blogDetails}}
-            {{title}}
-            {{body}}
+            <div> 
+                {{title}}
+            </div>
+            <div>  
+                {{body}}
+            </div>
 
             {{#comments}}
+            <div>
                 {{comment}}
+            </div>
             {{/comments}}
 
         {{/blogDetails}}
