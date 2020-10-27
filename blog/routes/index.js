@@ -12,21 +12,32 @@ router.get('/registration', (req, res) => {
     res.render('registration')
 })
 
-router.post('/create-account', (req, res) => {
+router.post('/create-account', async (req, res) => {
     let username = req.body.username
     let password = req.body.password
+     
+    let users = await db.any('SELECT username, password FROM users')
+    
+    let dupUser = users.find((user) => {
+        return user.username == username
+    })
 
-    //remember add in to check if dup username
-
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
-            db.none('INSERT INTO users (username, password) VALUES($1, $2)', [username, hash])
-
-            .then (() => {
-                res.redirect('login')
+    if (username == "" || password == "") {
+        res.render("registration", {message: "You must enter a username and password"})
+    }
+    else if (dupUser) {
+        res.render("registration", {message: "That username is already taken"})
+        
+    } else {
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(password, salt, function(err, hash) {
+                db.none('INSERT INTO users (username, password) VALUES($1, $2)', [username, hash])
+                .then (() => {
+                    res.redirect('login')
+                })
             })
         })
-    })
+    }
 
 })
 

@@ -16,8 +16,6 @@ app.use(express.urlencoded())
 
 app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"))
 app.set("views", VIEWS_PATH)
-// app.engine('mustache', mustacheExpress())
-// app.set('views', './views')
 app.set("view engine", "mustache")
 app.use("/blog", blogRouter)
 app.use("/", indexRouter)
