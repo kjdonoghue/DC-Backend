@@ -24,21 +24,22 @@ router.post('/create-account', async (req, res) => {
 
     if (username == "" || password == "") {
         res.render("registration", {message: "You must enter a username and password"})
-    }
-    else if (dupUser) {
+    } else if (dupUser) {
         res.render("registration", {message: "That username is already taken"})
-        
     } else {
         bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(password, salt, function(err, hash) {
-                db.none('INSERT INTO users (username, password) VALUES($1, $2)', [username, hash])
-                .then (() => {
-                    res.redirect('login')
-                })
+                if (err) {
+                    res.render("registration", {message: "An error has occured"})
+                } else {
+                    db.none('INSERT INTO users (username, password) VALUES($1, $2)', [username, hash])
+                    .then (() => {
+                        res.redirect('login')
+                    })
+                }
             })
         })
     }
-
 })
 
 
@@ -64,6 +65,8 @@ router.post('/verify-account', async (req, res) => {
         bcrypt.compare(password, verifiedUser.password, function(err, result) {
             if (result) {
                 res.redirect('/blog')
+            } else if (err) {
+                res.render("login", {message: "An error has occured"})
             } else {
             res.render("login", {message: "Password is not correct"})
             }

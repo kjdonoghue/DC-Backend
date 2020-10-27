@@ -45,9 +45,9 @@ router.post('/submit-comment', (req, res) => {
 
 router.post('/:post_id', async (req, res) => {
     let post_id = req.body.post_id
-
+    //need to fix so will show posts with no comments
     let result = await db.any('SELECT blog.post_id, title, body, date_created, comment_body FROM blog JOIN comments ON blog.post_id = comments.post_id WHERE blog.post_id = $1', [post_id])
-
+  
     let blogListing = getBlogDetails(result)
   
     res.render('details', {blogDetails: blogListing})
@@ -55,7 +55,7 @@ router.post('/:post_id', async (req, res) => {
 })
 
 function getBlogDetails(result) {
-    blogListing= []
+    blogListing = []
 
     result.forEach((item) => {
         if (blogListing.length == 0)  {
