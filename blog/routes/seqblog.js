@@ -73,38 +73,58 @@ router.post('/add-comment', (req, res) => {
 
 })
 
-router.post('/:post_id', (req, res) => {
-   let post_id = req.body.post_id
-    console.log(req.body.post_id)
+router.post('/seqdetails', (req, res) =>  {
+    let post_id = req.body.post_id
+        console.log(req.body.post_id)
+    
+        models.Blog.findByPk(post_id, {
+            include: [
+            {
+                model:models.comment,
+                 as:'comments'
+        }
+            ]
 
-    models.Blog.findByPk(post_id).then(blog => {
-        console.log(blog)
-        res.render("update", {updateBlogs: blog})
-    })
-
+        }).then(blog => {
+            res.render("seqdetails", {blogDetails: blog})
+        })
+    
 })
 
-router.post('/edit-post', (req, res) => {
-    const post_id = req.body.post_id
-    const title = req.body.title
-    const category = req.body.category
-    const body = req.body.body
+
+
+// router.post('/:post_id', (req, res) => {
+//    let post_id = req.body.post_id
+//     console.log(req.body.post_id)
+
+//     models.Blog.findByPk(post_id).then(blog => {
+//         console.log(blog)
+//         res.render("update", {updateBlogs: blog})
+//     })
+
+// })
+
+// router.post('/edit-post', (req, res) => {
+//     const post_id = req.body.post_id
+//     const title = req.body.title
+//     const category = req.body.category
+//     const body = req.body.body
     
 
-    models.Blog.update({
-        title: title,
-        category: category,
-        body: body 
-    }, {
-        where: {
-            id: post_id
-        }
-    }).then(updatedBlog => {
-        res.redirect('/seqblog')
-    })
+//     models.Blog.update({
+//         title: title,
+//         category: category,
+//         body: body 
+//     }, {
+//         where: {
+//             id: post_id
+//         }
+//     }).then(updatedBlog => {
+//         res.redirect('/seqblog')
+//     })
    
 
-})
+// })
 
 
 module.exports = router

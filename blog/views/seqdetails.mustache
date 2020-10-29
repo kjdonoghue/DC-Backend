@@ -1,0 +1,32 @@
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+
+
+    <div>
+        {{#blogDetails}}
+            <div> 
+                {{title}}
+            </div>
+            <div>  
+                {{body}}
+            </div>
+
+            {{#comments}}
+            <div>
+                {{title}} 
+                {{body}}
+            </div>
+            {{/comments}}
+
+        {{/blogDetails}}
+
+    </div>
+
+    </body>
+
+</html>
