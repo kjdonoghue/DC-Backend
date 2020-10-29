@@ -57,8 +57,19 @@ router.post('/search', (req, res) => {
 
 router.post('/add-comment', (req, res) => {
     let post_id = req.body.post_id
-    let commment_body = req.body.commment_body
+    let comment_title = req.body.comment_title
+    let comment_body = req.body.comment_body
+    console.log(comment_body)
 
+    let comment = models.comment.build({
+        title: comment_title,
+        body: comment_body,
+        post_id: post_id
+    })
+
+    comment.save().then(savedComment => {
+        res.redirect('/seqblog')
+    })
 
 })
 
