@@ -3,9 +3,9 @@ const app = express()
 const mustacheExpress = require('mustache-express')
 const { v4: uuidv4 } = require('uuid');
 const tripsRouter = require("./routes/trips") 
-const registrationRouter = require("./routes/registration")
-const loginRouter = require("./routes/login")
-const loggedoutRouter = require("./routes/loggedout")
+// const registrationRouter = require("./routes/registration")
+// const loginRouter = require("./routes/login")
+const indexRouter = require("./routes/index")
 const session = require("express-session")
 const path = require("path")
 const VIEWS_PATH = path.join(__dirname, "/views")
@@ -27,14 +27,14 @@ app.use(session({
   }))
 
 
-app.use("/registration", registrationRouter)
-app.use("/login", loginRouter)
+
+// app.use("/login", loginRouter)
 app.use("/trips", tripsRouter)
 //app.use("/trips", authenticate, tripsRouter)
-app.use("/loggedout", loggedoutRouter)
 app.engine("mustache", mustacheExpress(VIEWS_PATH + "/partials", ".mustache"))
 app.set("views", VIEWS_PATH)
 app.set("view engine", "mustache")
+app.use("/", indexRouter)
 
 function authenticate(req, res, next) {
     if (req.session) {
