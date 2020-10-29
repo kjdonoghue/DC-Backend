@@ -107,3 +107,10 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+
+###OSX###
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon

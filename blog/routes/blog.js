@@ -6,7 +6,7 @@ const db = pgp(connectionString)
 
 
 router.get("/", (req, res) => {
-    db.any('SELECT post_id, title, body FROM blog')
+    db.any('SELECT post_id, title, body FROM blogs_old')
     .then (blogs => {
         res.render("blog", {allBlogs: blogs})
     })
@@ -17,7 +17,7 @@ router.post("/create-post", (req, res) => {
     let body = req.body.blog_post
     let is_published = "True"
 
-    db.none('INSERT INTO blog(title, body, is_published) VALUES($1, $2, $3)', [title, body, is_published])
+    db.none('INSERT INTO blogs_old(title, body, is_published) VALUES($1, $2, $3)', [title, body, is_published])
     .then(() => {
         res.redirect("/blog")
     })
@@ -26,7 +26,7 @@ router.post("/create-post", (req, res) => {
 router.post("/delete-post", (req, res) => {
     let post_id = req.body.post_id
 
-    db.none('DELETE FROM blog WHERE post_id = $1', [post_id])
+    db.none('DELETE FROM blogs_old WHERE post_id = $1', [post_id])
     .then (() => {
         res.redirect("/blog")
     })
@@ -46,7 +46,7 @@ router.post('/submit-comment', (req, res) => {
 router.post('/:post_id', async (req, res) => {
     let post_id = req.body.post_id
     //need to fix so will show posts with no comments
-    let result = await db.any('SELECT blog.post_id, title, body, date_created, comment_body FROM blog JOIN comments ON blog.post_id = comments.post_id WHERE blog.post_id = $1', [post_id])
+    let result = await db.any('SELECT blogs_old.post_id, title, body, date_created, comment_body FROM blogs_old JOIN comments ON blogs_old.post_id = comments.post_id WHERE blogs_old.post_id = $1', [post_id])
   
     let blogListing = getBlogDetails(result)
   

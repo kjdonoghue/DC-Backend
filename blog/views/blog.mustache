@@ -5,7 +5,7 @@
     </head>
 
     <body>
-
+        <h1>Blog using SQL</h1>
         <h2>New Post:</h2>
         
         <form method="POST" action="/blog/create-post">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div>
-                        <input type='hidden' value={{post_id}} name='post_id' />
+                        <input type='hidden' value={{id}} name='post_id' />
                         <button formaction="/blog/{{post_id}}">Get Blog Details</button>
                         <button formaction="/blog/delete-post">Delete Blog Post</button>
                     </div>

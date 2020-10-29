@@ -18,6 +18,7 @@ router.post('/create-account', async (req, res) => {
      
     let users = await db.any('SELECT username, password FROM users')
     
+    
     let dupUser = users.find((user) => {
         return user.username == username
     })
@@ -61,7 +62,6 @@ router.post('/verify-account', async (req, res) => {
    
 
     if (verifiedUser) {
-        console.log("verified")
         bcrypt.compare(password, verifiedUser.password, function(err, result) {
             if (result) {
                 res.redirect('/blog')

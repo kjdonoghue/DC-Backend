@@ -1,0 +1,57 @@
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Blog Using Sequelize</h1>
+        <h2>New Post:</h2>
+        
+        <form method="POST" action="/seqblog/create-post">
+            <input type="text" placeholder="title" name="title" />
+            <input type="text" placeholder="category" name="category" />
+            <input type="textarea" placeholder="write your post here" name="body" />
+            <button>Submit</button>    
+
+        </form>
+
+        <h2>Previous Posts:</h2>
+        <form method="POST" action="/seqblog/search">
+        <select name="category">
+                    <option value="">Select a Category</option>
+                    <option value="movies">movies</option>
+                    <option value="trips">trips</option>
+                </select>
+                <button>Search</button>
+        </form>
+
+        <div>
+            {{#allBlogs}}
+                <form method="POST">
+            
+                    <div>
+                        <b>{{title}}</b>
+                    </div>
+                    <div>
+                        {{category}}
+                    </div>
+
+                    <div>
+                        {{body}}
+                    </div>
+
+                    <div>
+                        <input type='hidden' value={{id}} name='post_id' />
+                        <button formaction="/seqblog/{{id}}">Update Post</button>
+                        <button formaction="/seqblog/delete-post">Delete Blog Post</button>
+                    </div>
+
+                </form>
+            {{/allBlogs}}
+
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+    <head>
+
+    </head>
+
+    <body>
+    <h1> Edit Blog Post</h1>
+        <div>
+            {{#updateBlogs}}
+                <form method="POST" action="/seqblog/edit-post">
+                    <div>
+                        <p>Title: <input type="text" value='{{title}}' name="title" /></p> 
+                        <p>Category: <input type="text" value='{{category}}' name="category" /> </p>   
+                        <p>Post: <input type="textarea" value='{{body}}' name="body" /> </p>
+                        <input type="hidden" value={{id}} name={{post_id}} />
+                        <button>Submit Changes </button>
+                    </div>
+                  
+                </form>
+            {{/updateBlogs}}
+        </div>
+
+        
+
+    </body>
+
+</html>
