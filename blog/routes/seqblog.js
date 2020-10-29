@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const models = require('../models')
-const { Op } = require("sequelize")
+// const { Op } = require("sequelize")
 
 
 router.get('/', (req, res) => {
@@ -52,6 +52,13 @@ router.post('/search', (req, res) => {
     }).then(blogs => {
         res.render("seqblog", {allBlogs: blogs})
     })
+
+})
+
+router.post('/add-comment', (req, res) => {
+    let post_id = req.body.post_id
+    let commment_body = req.body.commment_body
+
 
 })
 
