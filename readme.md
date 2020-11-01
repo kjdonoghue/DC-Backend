@@ -4,7 +4,7 @@
 ## Summary of Work
 
 ### Trip Tracking
-- Prompt: Create an app using serverside pages that allows the user to register for an account with an encrypted password, log in to start a sesson, input, delete and view upcoming trips, and log out of their account. [Visit Trip Tracking](https://github.com/kjdonoghue/DC-Backend/tree/master/trip-tracking)
+- Prompt: Create an app using serverside pages that allows the user to register for an account with a username and password, log in to start a sesson, input, delete and view upcoming trips, log out of their account, and save users, encrypted passwords, and trip information on a Postgres using SQL. [Visit Trip Tracking](https://github.com/kjdonoghue/DC-Backend/tree/master/trip-tracking)
 
 Screenshots:
 
@@ -42,6 +42,9 @@ Screenshots:
 - To Do List: 
 
 -<img src="to-do-list/screenshot/to-do-list.png" alt="to do list" width=370>
+
+### Blog Site:
+- Prompt: Create a site where users can enter a blog post, post and view comments, and delete posts. Create this blog using SQL and then using Sequelize. - [Visit Blog Site](https://github.com/kjdonoghue/DC-Backend/tree/master/blog)
 
 
 ### Monday Activites
